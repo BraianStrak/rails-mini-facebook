@@ -1,6 +1,6 @@
 # Rails-mini-facebook
 This is the final project of The Odin Project rails development course. 
-The features of the program: 
+The features of the application: 
 
 ## Completed:
 
