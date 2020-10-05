@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    def index
-
+    def show
+        #profile page 
     end
 end
