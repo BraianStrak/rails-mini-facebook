@@ -3,10 +3,6 @@ Rails.application.routes.draw do
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  #devise_scope :user do
-  #  root to: "devise/sessions#new"
-  #end
-
   devise_scope :user do
     authenticated :user do
       root 'users#show', as: :authenticated_root

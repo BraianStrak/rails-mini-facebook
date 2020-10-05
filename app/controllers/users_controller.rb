@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     def show
         #profile page 
-        @user = current_user.id
+        @user = current_user
     end
 
     def index
