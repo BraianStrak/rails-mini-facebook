@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users
   resources :posts
+  resources :comments
   resources :posts do
     resources :likes
   end
