@@ -4,5 +4,7 @@ Your posts:<br>
  <%@posts.each do |post|%>
     <strong><%=post.title%></strong><br>
     <%=post.body%><br>
+    <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%><br>
+
     <br>
  <%end%>

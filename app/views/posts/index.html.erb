@@ -12,6 +12,8 @@
     Posted by: <strong><%=post.user.name%></strong><br>
     <strong><%=post.title%></strong><br>
     <%=post.body%><br>
+    <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%><br>
+    <%= button_to 'Like', post_likes_path(post), method: :post %>
     <br>
  <%end%>
 
