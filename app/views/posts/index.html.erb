@@ -1,17 +1,15 @@
 <h2>News Feed of <%=current_user.name%></h2>
 
- <%= form_with model: @post, local:true do |post_form| %>
-     <% post_form.hidden_field :user_id, value: current_user.id %><br>
+ <%= form_with model: @post, local: true do |post_form| %> 
     Post Title:<%= post_form.text_field :title %><br>  
     Post Body:<%= post_form.text_field :body %><br>                              
-
     <%= submit_tag ("Create post") %>
  <% end %>
 
  <br>
 
  <%@posts.each do |post|%>
-    <strong><%=post.user.name%>
+    Posted by: <strong><%=post.user.name%></strong><br>
     <strong><%=post.title%></strong><br>
     <%=post.body%><br>
     <br>

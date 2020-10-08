@@ -1,1 +1,8 @@
-<h2>Profile of <%=@user.name%></h2>
+<h2>Profile of <%=@user.name%></h2><br>
+
+Your posts:<br>
+ <%@posts.each do |post|%>
+    <strong><%=post.title%></strong><br>
+    <%=post.body%><br>
+    <br>
+ <%end%>
