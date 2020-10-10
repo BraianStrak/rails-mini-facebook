@@ -11,8 +11,22 @@
  <%@posts.each do |post|%>
     Posted by: <strong><%=post.user.name%></strong><br>
     <strong><%=post.title%></strong><br>
-    <%=post.body%><br>
+    <%= post.body %> <br>
     <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%><br>
+
+    <%if post.comments != nil%>
+      <%post.comments.each do |comment|%>
+         <%= comment.body %><br>
+      <%end%>
+    <%end%>
+
+    <%=form_with model: @comment do |comment_form| %>
+    <!-- We need to pass post id and user id as well as the text-->
+      <%= comment_form.hidden_field :post_id, value: post.id %>
+      <%= comment_form.text_field :body %>
+    <%= submit_tag("Create comment")%>
+    <%end%>
+
     <%= button_to 'Like', post_likes_path(post), method: :post %>
     <br>
  <%end%>
