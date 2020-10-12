@@ -15,9 +15,10 @@
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
         Logged in as: <%=current_user.name%><br>
-        <%= link_to " Logout", destroy_user_session_path, method: :delete, class:"button is-info" %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-info" %> |
         <%= link_to "My Profile", controller: "users", action: "show", id: current_user.id %> |
-        <%= link_to "News Feed", controller: "posts", action: "index"%> 
+        <%= link_to "News Feed", controller: "posts", action: "index"%> |
+        <%= link_to "Friend requests", controller: "users", action: "index"%> 
     <% end %>
     <%= yield %>
   </body>
