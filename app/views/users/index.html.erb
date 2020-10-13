@@ -1,4 +1,11 @@
 <h2>Send a friend request:</h2>
-<%@users.each do |user|%>
-    <%=user.name%><br>
+
+<%=form_with model: @friend_request_as_sender do |request_form|%>
+    <%@users.each do |user|%>
+        
+        <%=user.name%>
+        <%=radio_button_tag('receiver_id', user.id) %>
+        <br>
+    <%end%>
+    <%= submit_tag("Send request")%>
 <%end%>
