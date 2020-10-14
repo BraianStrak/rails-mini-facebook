@@ -18,4 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match 'auth/:provider/callback', to: 'devise/sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'devise/sessions#destroy', as: 'signout'
+
 end
