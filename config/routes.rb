@@ -17,9 +17,4 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
-
-  match 'auth/:provider/callback', to: 'devise/sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'devise/sessions#destroy', as: 'signout'
-
 end

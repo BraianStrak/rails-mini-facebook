@@ -310,9 +310,9 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   #omniauth initializers
-  OmniAuth.config.logger = Rails.logger
+  #OmniAuth.config.logger = Rails.logger
 
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_SHARED_SECRET']
-  end
+  #Rails.application.config.middleware.use OmniAuth::Builder do
+  #  provider :facebook, ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_SHARED_SECRET']
+  #end
 end
