@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users
   resources :posts
+  resources :friend_requests
+  resources :friendships
   resources :comments
   resources :posts do
     resources :likes
@@ -17,8 +19,5 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
-
-  #where omniauth callback goes to 
-  #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 end

@@ -1,13 +1,8 @@
 class FriendRequestsController < ApplicationController
     def create
-        @friend_request = current_user.friend_request_as_senders.build(friend_request_params)
+        #This and the other one return that user is missing. both do. 
+        @friend_request = FriendRequest.create(sender_id: current_user.id, receiver_id: params[:receiver_id])
         @friend_request.save
         redirect_to users_path
-    end
-
-    private
-
-    def friend_request_params
-        params.require(:friend_request).permit(:receiver_id)
     end
 end
