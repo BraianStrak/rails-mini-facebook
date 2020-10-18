@@ -16,7 +16,7 @@ class User < ApplicationRecord
     class_name: :FriendRequest
 
   #This lets us tell rails to look for user friendships where they are either friend A or friend B
-  has_many :friendships, ->(user) { where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
+  has_many :friendships #, ->(user) { where("friend_a_id = ? OR friend_b_id = ?", user.id, user.id) }
   
 
   def self.from_omniauth(auth)
@@ -37,5 +37,6 @@ class User < ApplicationRecord
       end
     end
   end
-  
+
+
 end
