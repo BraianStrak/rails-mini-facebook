@@ -4,7 +4,7 @@
     <%=form_with model: @friendship, local: true do%>
         <%@received_friend_requests.each do |request|%>
             Request from <%=request.sender.name%>
-            <%=radio_button_tag('friend_b_id', request.sender.id) %>
+            <%=radio_button_tag('friend_b_id', request.sender.id) %><br>
         <%end%>
         <%= submit_tag("Accept request")%>
     <%end%>

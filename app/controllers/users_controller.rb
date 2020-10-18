@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
-        @friendship = current_user.friendships.build
+        @friendship = Friendship.new
         @friend_request = current_user.friend_requests_as_sender.build
         @received_friend_requests = current_user.friend_requests_as_receiver.all
     end
