@@ -39,5 +39,36 @@ class User < ApplicationRecord
     end
   end
 
+  def self.user_friends(user)
+    friendships = Friendship.all
+    current_user_friendships = Array.new
+    friends = Array.new
+    friendships.each do |friendship|
+        if friendship.friend_a_id == user.id
+            current_user_friendships.push(friendship)
+        elsif friendship.friend_b_id == user.id
+            current_user_friendships.push(friendship)
+        end
+    end
+
+    if current_user_friendships.any?
+      current_user_friendships.each do |friendship|
+        #if the current user is not friend A
+        if friendship.friend_a_id != user.id
+          #add the user to the friends list
+          friends.push(User.find(friendship.friend_a_id))
+        else
+          #add the other user to the friends list
+          friends.push(User.find(friendship.friend_b_id))
+        end
+      end
+      friends.push(user)
+    end
+    friends
+  end
+
+  def self.available_for_request(user)
+
+  end
   
 end
