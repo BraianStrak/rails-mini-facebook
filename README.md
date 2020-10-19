@@ -13,10 +13,9 @@ The features of the application:
 - Sign-in with real Facebook using OmniAuth
 - Users can send friend requests to other users
 - A user must accept a friend request to become friends with another user
-
+- timeline which shows all the recent posts from the current user+users they are friends with
 
 ## WIP:
-- timeline which shows all the recent posts from the current user+users they are friends with
 - users can create a profile with a photo
 - mailer which sends a welcome email on signup with the letter_opener gem
 - the user index page lists all users and buttons for sending and accepting friend requests to those who are not already friends or who don’t already have a pending request

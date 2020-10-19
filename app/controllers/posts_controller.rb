@@ -21,8 +21,8 @@ class PostsController < ApplicationController
         params.require(:post).permit(:title, :body)
     end
 
+    #find friends of the current user
     def userfriends
-        #can make it go through all friendships to find current user, and add the other user to the friends
         friendships = Friendship.all
         current_user_friendships = Array.new
         friends = Array.new
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
                 current_user_friendships.push(friendship)
             end
         end
-
+    
         if current_user_friendships.any?
           current_user_friendships.each do |friendship|
             #if the current user is not friend A
@@ -50,6 +50,7 @@ class PostsController < ApplicationController
         friends
     end
     
+    #find newsfeed posts of current user using the user's friends
     def newsfeed_posts
         posts = Array.new
 
