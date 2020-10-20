@@ -1,6 +1,6 @@
-<h2>Send a friend request:</h2>
+<h2>Friend requests:</h2>
 
-<%if @received_friend_requests%>
+<%if @received_friend_requests.any?%>
     <%=form_with model: @friendship, local: true do%>
         <%@received_friend_requests.each do |request|%>
             Request from <%=request.sender.name%>
