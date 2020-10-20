@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
 
     def index
-        @users = User.all
+        @users = User.included_in_request(current_user)
         @friendship = Friendship.new
         @friend_request = current_user.friend_requests_as_sender.build
         @received_friend_requests = current_user.friend_requests_as_receiver.all

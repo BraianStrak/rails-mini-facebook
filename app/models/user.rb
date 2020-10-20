@@ -62,13 +62,46 @@ class User < ApplicationRecord
           friends.push(User.find(friendship.friend_b_id))
         end
       end
-      friends.push(user)
     end
+    friends.push(user)
     friends
   end
 
-  def self.available_for_request(user)
+  def self.included_in_request(user)
+    excluded_user_ids = Array.new
+    friendships = Friendship.all
+    if(user.friend_requests_as_sender != nil)
+      friend_requests = user.friend_requests_as_sender
+    end
 
+    excluded_user_ids.push(user.id)
+
+    if friend_requests.any?
+      friend_requests.each do |request|
+        #if the receiver is in there then exclude them from the friend request list
+        excluded_user_ids.push(request.receiver_id)
+      end
+    end
+    
+    if friendships.any?
+      friendships.each do |friendship|
+          # if the user is in the friendship
+          if(friendship.friend_a_id == user.id || friendship.friend_b_id == user.id)
+            #exclude both IDs in the friendship unless the ID is already excluded
+            unless excluded_user_ids.include? friendship.friend_a_id
+              excluded_user_ids.push(friendship.friend_a_id)
+            end
+
+            unless excluded_user_ids.include? friendship.friend_b_id
+              excluded_user_ids.push(friendship.friend_b_id)
+            end
+          end
+      end
+    end
+
+    #find a way to exclude them without deleting all users in the DB.
+    users = User.where.not(id: excluded_user_ids)
+    users
   end
 
   #This works, but can also override the devise registrations controller. 
