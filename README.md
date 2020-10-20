@@ -14,8 +14,9 @@ The features of the application:
 - Users can send friend requests to other users
 - A user must accept a friend request to become friends with another user
 - timeline which shows all the recent posts from the current user+users they are friends with
+- mailer which sends a welcome email on signup with the letter_opener gem
+
 
 ## WIP:
 - users can upload a profile photo
-- mailer which sends a welcome email on signup with the letter_opener gem
 - Users can't send friend requests to users they are already friends with, or that they have already sent a request to 

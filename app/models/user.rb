@@ -70,5 +70,12 @@ class User < ApplicationRecord
   def self.available_for_request(user)
 
   end
+
+  #This works, but can also override the devise registrations controller. 
+  after_create :send_admin_mail
+  def send_admin_mail
+    RegistrationMailer.welcome_email(self).deliver_now
+  end
+
   
 end
